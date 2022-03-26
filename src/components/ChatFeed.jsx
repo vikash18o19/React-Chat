@@ -2,6 +2,13 @@ import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
 
+const handleLogout =(e) =>{
+    localStorage.setItem('username','');
+    localStorage.setItem('password','');
+    window.location.reload();
+}
+
+
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
 
@@ -50,6 +57,24 @@ const ChatFeed = (props) => {
         <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`)}
         </div>
+        <div className='logout' style={{"position": "relative",
+                                        "float": "right",
+                                        "border": "2px",
+                                        "solid" : "#003B62",
+                                        //"background-color": "#B5CFE0",
+                                        "padding-left": "10px",
+                                        "paddingBottom": "30px"
+                                        }}>
+          <form onSubmit={handleLogout}>
+              <button type="submit" style={{
+                "background-color": "#B5CFE0",
+                "border-radius": "8px",
+                "font-family" : "verdana"
+
+              }}>Log Out</button>
+          </form>
+        </div>
+        
       </div>
       {renderMessages()}
       <div style={{ height: '100px' }} />
