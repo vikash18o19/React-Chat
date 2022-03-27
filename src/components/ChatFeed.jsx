@@ -53,10 +53,6 @@ const ChatFeed = (props) => {
   return (
     <div className="chat-feed">
       <div className="chat-title-container">
-        <div className="chat-title">{chat?.title}</div>
-        <div className="chat-subtitle">
-          {chat.people.map((person) => ` ${person.person.username}`)}
-        </div>
         <div className='logout' style={{"position": "relative",
                                         "float": "right",
                                         "border": "2px",
@@ -66,14 +62,14 @@ const ChatFeed = (props) => {
                                         "paddingBottom": "30px"
                                         }}>
           <form onSubmit={handleLogout}>
-              <button type="submit" style={{
-                "background-color": "#B5CFE0",
-                "border-radius": "8px",
-                "font-family" : "verdana"
-
-              }}>Log Out</button>
+              <button className='button-18' type="submit">Log Out</button>
           </form>
         </div>
+        <div className="chat-title">{chat?.title}</div>
+        <div className="chat-subtitle">
+          {chat.people.map((person) => ` ${person.person.username}`)}
+        </div>
+        
         
       </div>
       {renderMessages()}
